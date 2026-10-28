@@ -15,6 +15,11 @@
       padding: 0;
     }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     body {
       background-color: #fbf9f5; /* Warm, quiet off-white */
       color: #272727; /* Dark charcoal */
@@ -22,61 +27,73 @@
       text-align: center;
       line-height: 1.7;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
-      padding: 5rem 1.5rem 6rem;
+      align-items: flex-start;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 5vw, 1.5rem) clamp(3.5rem, 8vw, 6rem);
+      padding-top: calc(clamp(2.5rem, 6vw, 5rem) + env(safe-area-inset-top, 0px));
+      padding-bottom: calc(clamp(3.5rem, 8vw, 6rem) + env(safe-area-inset-bottom, 0px));
+      padding-left: calc(clamp(1rem, 5vw, 1.5rem) + env(safe-area-inset-left, 0px));
+      padding-right: calc(clamp(1rem, 5vw, 1.5rem) + env(safe-area-inset-right, 0px));
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     .container {
       width: 100%;
-      max-width: 580px; /* Narrow text container with a clean vertical flow */
+      max-width: 560px; /* Narrow text container with a clean vertical flow */
       margin: 0 auto;
     }
 
     /* Main Title */
     .title {
       font-family: 'Lora', Georgia, serif;
-      font-size: 2.15rem;
+      font-size: clamp(1.65rem, 5vw, 2.15rem);
       font-weight: 500;
       letter-spacing: -0.01em;
       color: #244634; /* Subtle forest-green accent */
-      margin-bottom: 1.25rem;
+      margin-bottom: clamp(0.75rem, 2.5vw, 1.25rem);
       line-height: 1.25;
+      text-wrap: balance;
     }
 
     /* Subtitle / Note */
     .note {
-      font-size: 0.92rem;
+      font-size: clamp(0.85rem, 2.5vw, 0.92rem);
       color: #55534e;
       line-height: 1.6;
-      margin-bottom: 3.5rem;
+      margin-bottom: clamp(2.25rem, 6vw, 3.5rem);
       font-weight: 400;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Primary Pack Section */
     .pack-heading {
       font-family: 'Lora', Georgia, serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.15rem, 3.5vw, 1.35rem);
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #2b2b2b;
-      margin-bottom: 2.75rem;
+      margin-bottom: clamp(1.75rem, 5vw, 2.75rem);
     }
 
     /* Compartment Groups */
     .section {
-      margin-bottom: 3rem;
+      margin-bottom: clamp(2rem, 5vw, 3rem);
     }
 
     .section-title {
       font-family: 'Lora', Georgia, serif;
-      font-size: 1.15rem;
+      font-size: clamp(1.05rem, 3vw, 1.15rem);
       font-weight: 500;
       color: #1f2a24;
-      margin-bottom: 1.25rem;
+      margin-bottom: clamp(0.85rem, 2.5vw, 1.25rem);
       letter-spacing: 0.01em;
     }
 
@@ -84,11 +101,11 @@
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 0.95rem;
+      gap: clamp(0.75rem, 2vw, 0.95rem);
     }
 
     .item {
-      font-size: 0.96rem;
+      font-size: clamp(0.88rem, 2.5vw, 0.96rem);
       color: #383838;
       font-weight: 300;
       line-height: 1.65;
@@ -102,36 +119,8 @@
 
     /* Standalone Survival Kit Section */
     .standalone-section {
-      margin-top: 3.75rem;
-      padding-top: 2rem;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      body {
-        padding: 3.5rem 1.25rem 4.5rem;
-      }
-      .title {
-        font-size: 1.85rem;
-        margin-bottom: 1rem;
-      }
-      .note {
-        font-size: 0.88rem;
-        margin-bottom: 2.75rem;
-      }
-      .pack-heading {
-        font-size: 1.2rem;
-        margin-bottom: 2.25rem;
-      }
-      .section {
-        margin-bottom: 2.5rem;
-      }
-      .section-title {
-        font-size: 1.08rem;
-      }
-      .item {
-        font-size: 0.92rem;
-      }
+      margin-top: clamp(2.5rem, 6vw, 3.75rem);
+      padding-top: clamp(1.25rem, 3vw, 2rem);
     }
   </style>
 </head>
