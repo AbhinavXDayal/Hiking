@@ -129,9 +129,17 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Compartment Groups (Clean layout, no sub-boxes) */
+    /* Compartment Groups (Clean layout with subtle visual separators) */
     .section-group {
-      margin-bottom: clamp(1.1rem, 2.5vw, 1.4rem);
+      margin-bottom: clamp(1rem, 2vw, 1.3rem);
+      padding-bottom: clamp(0.9rem, 2vw, 1.2rem);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-group:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .section-title {
@@ -139,22 +147,32 @@
       font-size: clamp(1rem, 2.5vw, 1.1rem);
       font-weight: 400;
       color: #f7f1e6; /* Very light cream title */
-      margin-bottom: clamp(0.45rem, 1.5vw, 0.65rem);
+      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
       letter-spacing: 0.02em;
     }
 
-    /* Checklist Items (Clean typography rows, no boxes) */
+    /* Checklist Items (Clean typography rows with delicate divider rules) */
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem; /* Clean, compact line spacing */
     }
 
     .item-text {
       font-size: clamp(0.84rem, 2vw, 0.91rem);
       color: #ded8cb; /* Very light cream body */
       font-weight: 300;
-      line-height: 1.5;
+      line-height: 1.55;
+      padding: 0.38rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    }
+
+    .item-text:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .item-text:first-child {
+      padding-top: 0;
     }
 
     .item-text a {
@@ -178,9 +196,10 @@
 
     /* Standalone Survival Kit Section inside main box */
     .standalone-section {
-      margin-top: clamp(1.3rem, 3vw, 1.7rem);
-      padding-top: clamp(1rem, 2.5vw, 1.3rem);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: clamp(1.1rem, 2.5vw, 1.4rem);
+      padding-top: clamp(0.9rem, 2vw, 1.2rem);
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      border-bottom: none;
     }
   </style>
 </head>
