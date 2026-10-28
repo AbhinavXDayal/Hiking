@@ -129,11 +129,11 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Compartment Groups (Clean layout with subtle visual separators) */
+    /* Compartment Groups with clean bottom visual separators */
     .section-group {
       margin-bottom: clamp(1rem, 2vw, 1.3rem);
       padding-bottom: clamp(0.9rem, 2vw, 1.2rem);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .section-group:last-of-type {
@@ -151,10 +151,11 @@
       letter-spacing: 0.02em;
     }
 
-    /* Checklist Items (Clean typography rows with delicate divider rules) */
+    /* Checklist Items (Clean typography rows, no individual item dividers) */
     .item-list {
       display: flex;
       flex-direction: column;
+      gap: 0.35rem; /* Natural clean vertical rhythm */
     }
 
     .item-text {
@@ -162,17 +163,6 @@
       color: #ded8cb; /* Very light cream body */
       font-weight: 300;
       line-height: 1.55;
-      padding: 0.38rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.035);
-    }
-
-    .item-text:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .item-text:first-child {
-      padding-top: 0;
     }
 
     .item-text a {
