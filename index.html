@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiking Checklist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base Setup */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fbf9f5; /* Warm, quiet off-white */
+      color: #272727; /* Dark charcoal */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      text-align: center;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 5rem 1.5rem 6rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 580px; /* Narrow text container with a clean vertical flow */
+      margin: 0 auto;
+    }
+
+    /* Main Title */
+    .title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 2.15rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #244634; /* Subtle forest-green accent */
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+
+    /* Subtitle / Note */
+    .note {
+      font-size: 0.92rem;
+      color: #55534e;
+      line-height: 1.6;
+      margin-bottom: 3.5rem;
+      font-weight: 400;
+    }
+
+    /* Primary Pack Section */
+    .pack-heading {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #2b2b2b;
+      margin-bottom: 2.75rem;
+    }
+
+    /* Compartment Groups */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #1f2a24;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Checklist Items & Categories */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .item {
+      font-size: 0.96rem;
+      color: #383838;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .category {
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 0.01em;
+    }
+
+    /* Standalone Survival Kit Section */
+    .standalone-section {
+      margin-top: 3.75rem;
+      padding-top: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      body {
+        padding: 3.5rem 1.25rem 4.5rem;
+      }
+      .title {
+        font-size: 1.85rem;
+        margin-bottom: 1rem;
+      }
+      .note {
+        font-size: 0.88rem;
+        margin-bottom: 2.75rem;
+      }
+      .pack-heading {
+        font-size: 1.2rem;
+        margin-bottom: 2.25rem;
+      }
+      .section {
+        margin-bottom: 2.5rem;
+      }
+      .section-title {
+        font-size: 1.08rem;
+      }
+      .item {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Hiking Checklist</h1>
+    <p class="note">Everything categorized &amp; kept in stuff sacks, no bifurcation, each category will be in a single stuff sack</p>
+
+    <h2 class="pack-heading">50L Rucksack</h2>
+
+    <!-- Main Compartment -->
+    <section class="section">
+      <h3 class="section-title">Main Compartment</h3>
+      <div class="item-list">
+        <p class="item"><span class="category">Survival Kit</span> - Gear kit &amp; medical kit, refer to the attached file</p>
+        <p class="item"><span class="category">Clothing</span> - 2 T shirt &amp; pants, 1 shorts, 1 fleece, jacket &amp; warm pants</p>
+        <p class="item"><span class="category">Sleeping</span> - 1 Tent, sleeping quilt &amp; sleeping pad ( sometimes outside the bag )</p>
+        <p class="item"><span class="category">Food</span> - 1 Plate, spoon, sponge &amp; food</p>
+      </div>
+    </section>
+
+    <!-- Side Compartment -->
+    <section class="section">
+      <h3 class="section-title">Side Compartment</h3>
+      <div class="item-list">
+        <p class="item"><span class="category">Rain</span> - 1 Rain jacket &amp; pants</p>
+        <p class="item"><span class="category">Dirty</span> - All dirty clothes &amp; items</p>
+      </div>
+    </section>
+
+    <!-- Top Compartment -->
+    <section class="section">
+      <h3 class="section-title">Top Compartment</h3>
+      <div class="item-list">
+        <p class="item"><span class="category">Toiletry</span> - 1 Toilet tent, paper soap, trowel &amp; wet wipes</p>
+        <p class="item"><span class="category">Accessories</span> - 1 cap, beanie, bandana, gloves, socks, gaiters, sunscreen, lip balm &amp; carabiners</p>
+      </div>
+    </section>
+
+    <!-- Hip Compartment -->
+    <section class="section">
+      <h3 class="section-title">Hip Compartment</h3>
+      <div class="item-list">
+        <p class="item"><span class="category">Essentials</span> - Snacks &amp; hiking specific gears</p>
+      </div>
+    </section>
+
+    <!-- Survival Kit Section -->
+    <section class="section standalone-section">
+      <h3 class="section-title">Survival Kit</h3>
+      <div class="item-list">
+        <p class="item"><span class="category">Important</span> - Water, cooking, lights, medicines &amp; other essential gear ( kept in the survival kit )</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
