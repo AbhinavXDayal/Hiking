@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist Survival</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #f6f4ef;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 1.5rem 1rem;
+      color: #1a1a18;
+      display: flex;
+      justify-content: center;
+    }
+    .page {
+      background: #fefefe;
+      width: 100%;
+      max-width: 1100px;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #ede9e0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .page-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #1a1a18;
+      padding: 0.5rem 0.25rem 0.25rem;
+      text-align: center;
+    }
+    .page-subtitle {
+      font-size: 10.5px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+    .gear-intro {
+      font-size: 10px;
+      color: #1a1a18;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      background: #faf8f5;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 0.5px solid #eee8df;
+    }
+    .outer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 820px) {
+      .outer { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: #fdfdfc;
+      border: 0.5px solid #ede9e0;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red { background: #d94f4f; }
+    .dot-blue { background: #4a7fd4; }
+    .dot-amber { background: #c08a0a; }
+    .dot-green { background: #3d8f4e; }
+    .dot-purple { background: #7a66cc; }
+    .dot-brown { background: #a0784a; }
+    .dot-teal { background: #3a8f7f; }
+    .dot-slate { background: #6a7f9a; }
+    .dot-olive { background: #7a8f3a; }
+    .dot-rose { background: #c0566a; }
+    .dot-indigo { background: #5a6acf; }
+    .dot-lime { background: #6a9a2a; }
+    .dot-violet { background: #8a5acf; }
+    .dot-orange { background: #c07a2a; }
+    .dot-cyan { background: #2a9fa8; }
+    .dot-gray { background: #888; }
+
+    .card {
+      background: #fff;
+      border: 0.5px solid #edeae2;
+      border-radius: 7px;
+      padding: 0.65rem;
+    }
+    .card-title {
+      font-size: 10.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #1a1a18;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #1a1a18;
+      padding: 2.5px 0;
+      border-bottom: 0.5px solid #f6f4ef;
+    }
+    .row:last-child { border-bottom: none; }
+    .ls-row {
+      font-size: 9.5px;
+      color: #2c2c2a;
+      padding: 3px 0;
+      border-bottom: 0.5px solid #f6f4ef;
+      line-height: 1.5;
+    }
+    .ls-row:last-child { border-bottom: none; }
+
+    .kit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a18;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 10px;
+      color: #666;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    @media (max-width: 480px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+    .plain-card {
+      background: #fff;
+      border: 0.5px solid #edeae2;
+      border-radius: 6px;
+      padding: 8px;
+    }
+    .plain-card p {
+      font-size: 9.5px;
+      color: #444;
+      line-height: 1.5;
+      padding: 2px 0;
+      border-bottom: 0.5px solid #f6f4ef;
+    }
+    .plain-card p:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .em-card {
+      background: #fff;
+      border: 0.5px solid #edeae2;
+      border-radius: 7px;
+      padding: 0.65rem;
+    }
+    .em-title {
+      font-size: 10.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #1a1a18;
+    }
+    .em-row {
+      font-size: 9.5px;
+      color: #2c2c2a;
+      padding: 2.5px 0;
+      border-bottom: 0.5px solid #f6f4ef;
+      line-height: 1.5;
+    }
+    .em-row:last-child { border-bottom: none; }
+    .em-num {
+      font-weight: 600;
+      margin-right: 5px;
+      color: #d94f4f;
+    }
+
+    .ls-intro {
+      font-size: 10px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 4px;
+      background: #faf8f5;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="page-title">Minimalist Survival</div>
+  <div class="page-subtitle">Keep this kit &amp; sheet printed at your home, in your car for long trips &amp; while travelling, also keep a printed copy of the sheet in your wallet, always inform your loved ones &amp; authorities about your itinerary, learn about nature - its skills, tools, treatments, risks, geography etc &amp; consume content related to survival &amp; nature</div>
+  <div class="gear-intro"><b>Gear Kit</b> - Prioritize shelter and water before fire and food, Rotate food and water supplies every 6 months, Know how to use every item before you need it, To reduce redudancy we can use the items from the kit for our travel or treks, or we can keep daily use items and survival kit separate but then redudancy is often indirectly introduced, Practice skills &amp; learn to make tools from nature, modern gear is great, but also practice skills that don't rely on modern gear to help with bushcraft</div>
+  
+  <div class="outer">
+
+    <!-- Gear Kit -->
+    <div class="panel">
+      <div class="kit-title">Gear Kit</div>
+      <div class="subtitle">33 items · Water: 3 · Fire: 3 · Navigation: 3 · Shelter: 3 · Tools: 7 · Electronics: 5 · Food: 3 · Others: 6</div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title"><span class="dot dot-teal"></span>Water</div>
+          <div class="row"><span>Water filter</span><span>1</span></div>
+          <div class="row"><span>Purification tablets</span><span>10</span></div>
+          <div class="row"><span>Bottles</span><span>2</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-amber"></span>Fire</div>
+          <div class="row"><span>Ferro rod</span><span>1</span></div>
+          <div class="row"><span>Lighter</span><span>1</span></div>
+          <div class="row"><span>Fuel blocks</span><span>10</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-slate"></span>Navigation</div>
+          <div class="row"><span>Emergency communicator</span><span>1</span></div>
+          <div class="row"><span>Whistle</span><span>1</span></div>
+          <div class="row"><span>Signal mirror</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-brown"></span>Shelter</div>
+          <div class="row"><span>Tarp</span><span>1</span></div>
+          <div class="row"><span>Emergency bivvy</span><span>1</span></div>
+          <div class="row"><span>Paracord</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-red"></span>Tools</div>
+          <div class="row"><span>Multitool</span><span>1</span></div>
+          <div class="row"><span>Knife</span><span>1</span></div>
+          <div class="row"><span>Repair tape</span><span>1</span></div>
+          <div class="row"><span>Pepper spray</span><span>1</span></div>
+          <div class="row"><span>Superglue</span><span>1</span></div>
+          <div class="row"><span>Sewing needles</span><span>2</span></div>
+          <div class="row"><span>Sharpie &amp; notes</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-cyan"></span>Electronics</div>
+          <div class="row"><span>Power bank</span><span>1</span></div>
+          <div class="row"><span>Flashlight</span><span>1</span></div>
+          <div class="row"><span>Solar charger</span><span>1</span></div>
+          <div class="row"><span>Charging cables</span><span>2</span></div>
+          <div class="row"><span>Headlamp</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-olive"></span>Food</div>
+          <div class="row"><span>Ration bars</span><span>5</span></div>
+          <div class="row"><span>Packed food</span><span>5</span></div>
+          <div class="row"><span>Stove &amp; pot</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-gray"></span>Others</div>
+          <div class="row"><span>Spare keys</span><span>2</span></div>
+          <div class="row"><span>Clothing</span><span>1</span></div>
+          <div class="row"><span>Soap</span><span>1</span></div>
+          <div class="row"><span>Toilet paper</span><span>1</span></div>
+          <div class="row"><span>Survival guide</span><span>1</span></div>
+          <div class="row"><span>Emergency cash</span><span>1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Life Skills -->
+    <div class="panel">
+      <div class="kit-title">Life Skills</div>
+      <div class="ls-intro">Workout · Recovery · Nutrition · In workout we have dynamic warmups, weightlifting, sports &amp; self defence which are important life skills · Sports like swimming can be life saving · Self defence is also an important life skill, but avoid fights whenever possible, try communication, de escalation, or leaving first · Self defence should be the last option if things go wrong</div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-lime"></span>Lifestyle</div>
+        <div class="ls-row">Focus on natural things / ways with a minimalist approach, educate yourself, gain diverse knowledge &amp; use logic</div>
+        <div class="ls-row">Reduce modern high tech digital life, stick to essentials, remove unnecessary apps &amp; use chrome instead, maintain a natural yet modern lifestyle</div>
+        <div class="ls-row">Wake at 7, freshen up, meditate, skin, oral &amp; hair care, sleep at 11</div>
+        <div class="ls-row">Develop a good personality, styling, skills / hobbies, extroversion &amp; social network</div>
+        <div class="ls-row">A healthy mind, environment &amp; body are the major keys to mental health</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-indigo"></span>Split</div>
+        <div class="ls-row">Dynamic warmup → weightlifting ( machines &amp; free weights ) → cardio → self defence</div>
+        <div class="ls-row">Mon, thu - back ( 3 ), arms ( 2 ), shoulders ( 1 ) + cardio sports / mma</div>
+        <div class="ls-row">Tue, fri - legs ( 3 ), chest ( 2 ), abs ( 1 ) + cardio sports / mma</div>
+        <div class="ls-row">Wed - calisthenics ( 3 ) + self defence w tools ( 2 ) + neck ( 2 ) + long run ( 1 )</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-rose"></span>Execution</div>
+        <div class="ls-row">Choose a weight where the Zth rep feels very hard &amp; close to failure, perform controlled reps with a natural full ROM, maintain proper form &amp; never ego lift, with 1 RIR, all for injury prevention</div>
+        <div class="ls-row">For saftey &amp; support, have some kind of backups &amp; supporting gears, backups like - saftey bars, spotters etc &amp; supporting gears like - knee sleeves, lifting straps etc, listen to your body, warm up properly &amp; if something doesn't feel comfortable or safe, don't proceed or be cautious</div>
+        <div class="ls-row">Heavier weights for big muscle groups with compound movements for strength &amp; indirect muscle use | lighter weights for small muscle groups with isolation movements for specific targeting</div>
+        <div class="ls-row">Reps - big muscles ( 10 ), mid muscles ( 12 ), small muscles ( 15 )</div>
+        <div class="ls-row">Pyramid warmup sets - 3 sets × Z reps, low weight w high reps, mid weight w mid reps &amp; heavy weight w low reps</div>
+        <div class="ls-row">Same for calisthenics, where low weight is replaced by an easier exercise with longer hold times &amp; so on</div>
+        <div class="ls-row">Target sets - 2 × Z reps ( weights ) | 2 × Z sec hold w micro reps ( cali )</div>
+        <div class="ls-row">Progressive overload gradually with 1 - 2 kg ( weights ) | 5 - 10 sec ( cali )</div>
+        <div class="ls-row">Now the above guidelines are for weightlifting, but what about cardio &amp; self defence, we don't really have fixed guidelines for sports, you can either do them for as long as you want or follow a structured format like sets, for eg badminton has 3 sets of 21 points or you can do 4 sets of 21 points</div>
+        <div class="ls-row">Target sets - 4 × 21 pts like for badminton</div>
+        <div class="ls-row">Run at a slow pace with a natural stride &amp; light mid foot landing, maintaining smooth &amp; proper form</div>
+        <div class="ls-row">Easy pace run for X km with walk breaks as needed for long runs</div>
+        <div class="ls-row">Add +1 km to long runs when ready &amp; keep increasing pace</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-violet"></span>Recovery</div>
+        <div class="ls-row">Sat &amp; sun are recovery days, wed is active recovery</div>
+        <div class="ls-row">Have quality sleep &amp; a consistent sleep routine</div>
+        <div class="ls-row">Morning - 6:30, lights brighten (30 min fade), nature sounds (30 min fade), sunlight</div>
+        <div class="ls-row">Night - 10:30, lights dim through smart lighting (30 min fade), bedtime mode on phone</div>
+        <div class="ls-row">Exception - sun 12:30 - 7:30 am (sat late night)</div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-orange"></span>Nutrition</div>
+        <div class="ls-row">Natural, minimally processed whole foods with good nutrition</div>
+        <div class="ls-row">Have a balanced diet with protein, carbs &amp; fiber, for maximum muscle building take protein at 1.5 g / kg bodyweight &amp; stay hydrated</div>
+        <div class="ls-row">Use apps to calculate your maintenance calories &amp; then bulk, maintain or cut accordingly</div>
+      </div>
+    </div>
+
+    <!-- Medical Kit -->
+    <div class="panel">
+      <div class="kit-title">Medical Kit</div>
+      <div class="subtitle">30 items · Wounds: 7 · Medications: 8 · Cleaning: 3 · Trauma: 3 · Tools: 5 · Specifics: 4</div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title"><span class="dot dot-red"></span>Wounds</div>
+          <div class="row"><span>Adhesive bandages</span><span>10</span></div>
+          <div class="row"><span>Gauze pads</span><span>10</span></div>
+          <div class="row"><span>Adhesive tape</span><span>1</span></div>
+          <div class="row"><span>Gauze bandage</span><span>1</span></div>
+          <div class="row"><span>Steri strips</span><span>10</span></div>
+          <div class="row"><span>Elastic bandage</span><span>1</span></div>
+          <div class="row"><span>Burn gel</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-green"></span>Medications</div>
+          <div class="row"><span>Paracetamol</span><span>10 tb</span></div>
+          <div class="row"><span>ORS sachets</span><span>5</span></div>
+          <div class="row"><span>Antihistamine</span><span>10 tb</span></div>
+          <div class="row"><span>Loperamide</span><span>10 tb</span></div>
+          <div class="row"><span>Aspirin</span><span>3 tb</span></div>
+          <div class="row"><span>Lozenges</span><span>10 tb</span></div>
+          <div class="row"><span>Nasal spray</span><span>1</span></div>
+          <div class="row"><span>Pain gel</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-blue"></span>Cleaning</div>
+          <div class="row"><span>Saline solution</span><span>1</span></div>
+          <div class="row"><span>Antibiotic ointment</span><span>1</span></div>
+          <div class="row"><span>Soap</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-red"></span>Trauma</div>
+          <div class="row"><span>Tourniquet</span><span>1</span></div>
+          <div class="row"><span>Space blanket</span><span>1</span></div>
+          <div class="row"><span>Splint</span><span>1</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-amber"></span>Tools</div>
+          <div class="row"><span>Scissors</span><span>1</span></div>
+          <div class="row"><span>Pointed tweezers</span><span>1</span></div>
+          <div class="row"><span>Nitrile gloves</span><span>2 pr</span></div>
+          <div class="row"><span>Thermometer</span><span>1</span></div>
+          <div class="row"><span>Safety pins</span><span>3</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot dot-purple"></span>Specifics</div>
+          <div class="row"><span>Eye drops</span><span>1</span></div>
+          <div class="row"><span>Tampons</span><span>5</span></div>
+          <div class="row"><span>Dental oil</span><span>1</span></div>
+          <div class="row"><span>Medical Guide</span><span>1</span></div>
+        </div>
+      </div>
+      <div class="plain-card">
+        <p>Use medicines only when necessary &amp; in proper doses</p>
+        <p>Check expiry every year</p>
+        <p>Consult a doctor if symptoms are severe, unusual or not improving</p>
+        <p>Seek emergency care if the situation is life threatening</p>
+      </div>
+    </div>
+
+    <!-- Emergency Sheet -->
+    <div class="panel">
+      <div class="kit-title">Emergency Sheet</div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-red"></span>Emergency Numbers</div>
+        <div class="em-row"><span class="em-num">112</span>All emergencies ( India universal )</div>
+        <div class="em-row"><span class="em-num">100</span>Police</div>
+        <div class="em-row"><span class="em-num">101</span>Fire</div>
+        <div class="em-row"><span class="em-num">102</span>Ambulance</div>
+        <div class="em-row"><span class="em-num">1091</span>Women helpline</div>
+        <div class="em-row"><span class="em-num">1098</span>Child helpline</div>
+        <div class="em-row"><span class="em-num">1800-599-0019</span>Mental health ( iCall )</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-rose"></span>If You Are Lost</div>
+        <div class="em-row">Stay calm, stop moving, find shelter</div>
+        <div class="em-row">Signal rescuers — whistle, mirror, fire smoke</div>
+        <div class="em-row">Stay in one place — easier to find</div>
+        <div class="em-row">Conserve energy &amp; water</div>
+        <div class="em-row">Leave signs of your path if you must move</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-orange"></span>If Power Goes Out</div>
+        <div class="em-row">Keep fridge closed — food lasts 4 hrs</div>
+        <div class="em-row">Use torch, not candles if possible</div>
+        <div class="em-row">Unplug devices to avoid surge damage</div>
+        <div class="em-row">Check on elderly &amp; vulnerable neighbours</div>
+        <div class="em-row">Use power bank for phone — keep calls short</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-amber"></span>If There Is a Fire</div>
+        <div class="em-row">Alert everyone — shout, pull alarm</div>
+        <div class="em-row">Get low under smoke &amp; crawl to exit</div>
+        <div class="em-row">Feel doors before opening — hot = danger</div>
+        <div class="em-row">Never use lifts</div>
+        <div class="em-row">Once out — do not go back in</div>
+        <div class="em-row">Call 101 from a safe distance</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-indigo"></span>If There Is a Flood</div>
+        <div class="em-row">Move to higher ground immediately</div>
+        <div class="em-row">Avoid walking in moving water</div>
+        <div class="em-row">Turn off electricity at the mains</div>
+        <div class="em-row">Do not drive through flooded roads</div>
+        <div class="em-row">Take emergency kit &amp; documents</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-teal"></span>If There Is an Earthquake</div>
+        <div class="em-row">Drop, cover, hold on</div>
+        <div class="em-row">Get under sturdy table or against interior wall</div>
+        <div class="em-row">Stay away from windows &amp; heavy furniture</div>
+        <div class="em-row">If outside — move away from buildings &amp; wires</div>
+        <div class="em-row">After shaking stops — check for injuries &amp; gas leaks</div>
+      </div>
+      <div class="em-card">
+        <div class="em-title"><span class="dot dot-violet"></span>72 hr Bag Essentials</div>
+        <div class="em-row">Water ( 3 L / person / day )</div>
+        <div class="em-row">Food — non perishable, easy to open</div>
+        <div class="em-row">Documents — ID, insurance, cash</div>
+        <div class="em-row">Phone charger &amp; power bank</div>
+        <div class="em-row">Torch &amp; extra batteries</div>
+        <div class="em-row">Basic medical kit &amp; medicines</div>
+        <div class="em-row">Change of clothes &amp; rain cover</div>
+        <div class="em-row">Whistle, knife, rope</div>
+      </div>
+      <div class="plain-card">
+        <p>Stay calm in any emergency — panic costs more than the emergency itself.</p>
+        <p>Know your exits, know your neighbours, know your kit.</p>
+        <p>Prepare before, not during.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
