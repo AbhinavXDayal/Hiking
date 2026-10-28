@@ -114,6 +114,12 @@
     }
 
     /* Primary Pack Section */
+    .pack-wrapper {
+      margin-bottom: clamp(1rem, 2vw, 1.3rem);
+      padding-bottom: clamp(0.9rem, 2vw, 1.2rem);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
     .pack-heading {
       font-family: 'Lora', Georgia, serif;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
@@ -121,7 +127,6 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #faf5ec;
-      margin-bottom: clamp(1.1rem, 2.5vw, 1.4rem);
       display: inline-block;
       padding: 0.28rem 0.95rem;
       border-radius: 9999px;
@@ -205,7 +210,9 @@
         <p class="note">Everything categorized &amp; kept in stuff sacks, no bifurcation, each category will be in a single stuff sack</p>
       </header>
 
-      <div class="pack-heading">50L Rucksack</div>
+      <div class="pack-wrapper">
+        <div class="pack-heading">50L Rucksack</div>
+      </div>
 
       <!-- Main Compartment -->
       <section class="section-group">
