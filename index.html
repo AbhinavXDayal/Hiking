@@ -73,19 +73,24 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 620px;
+      max-width: 580px;
       margin: 0 auto;
     }
 
-    /* Main Title Header Box */
-    .header-box {
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 14px;
-      padding: clamp(1.2rem, 3vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
-      margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    /* Single Outer Aesthetic Box containing the entire checklist */
+    .main-box {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: clamp(1.4rem, 3.5vw, 2.2rem) clamp(1.1rem, 3vw, 1.8rem);
+      box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Main Title Header inside Box */
+    .header-group {
+      margin-bottom: clamp(1.2rem, 3vw, 1.6rem);
     }
 
     .title {
@@ -94,7 +99,7 @@
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #faf5ec; /* Light cream tone */
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
       line-height: 1.25;
       text-wrap: balance;
     }
@@ -120,27 +125,13 @@
       display: inline-block;
       padding: 0.28rem 0.95rem;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Compartment Groups (Aesthetic Cards/Boxes) */
-    .section-card {
-      background: rgba(255, 255, 255, 0.025); /* Ultra subtle transparent glass */
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 12px;
-      padding: clamp(0.95rem, 2.5vw, 1.25rem) clamp(0.85rem, 2.5vw, 1.25rem);
-      margin-bottom: clamp(0.85rem, 2vw, 1.1rem);
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .section-card:hover {
-      border-color: rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.035);
+    /* Compartment Groups (Clean layout, no sub-boxes) */
+    .section-group {
+      margin-bottom: clamp(1.1rem, 2.5vw, 1.4rem);
     }
 
     .section-title {
@@ -148,35 +139,25 @@
       font-size: clamp(1rem, 2.5vw, 1.1rem);
       font-weight: 400;
       color: #f7f1e6; /* Very light cream title */
-      margin-bottom: clamp(0.65rem, 1.8vw, 0.85rem);
+      margin-bottom: clamp(0.45rem, 1.5vw, 0.65rem);
       letter-spacing: 0.02em;
     }
 
-    /* Checklist Items & Nested Aesthetic Item Boxes */
+    /* Checklist Items (Clean typography rows, no boxes) */
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem; /* Tight, compact, aesthetic vertical rhythm */
+      gap: 0.35rem; /* Clean, compact line spacing */
     }
 
-    .item-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.045);
-      border-radius: 7px;
-      padding: 0.5rem 0.85rem;
+    .item-text {
       font-size: clamp(0.84rem, 2vw, 0.91rem);
       color: #ded8cb; /* Very light cream body */
       font-weight: 300;
       line-height: 1.5;
-      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
-    .item-box:hover {
-      background: rgba(255, 255, 255, 0.045);
-      border-color: rgba(255, 255, 255, 0.09);
-    }
-
-    .item-box a {
+    .item-text a {
       color: #faf5ec;
       text-decoration: underline;
       text-decoration-color: rgba(250, 245, 236, 0.4);
@@ -184,7 +165,7 @@
       transition: text-decoration-color 0.15s ease, color 0.15s ease;
     }
 
-    .item-box a:hover {
+    .item-text a:hover {
       color: #ffffff;
       text-decoration-color: #ffffff;
     }
@@ -195,11 +176,11 @@
       letter-spacing: 0.01em;
     }
 
-    /* Standalone Survival Kit Card */
-    .standalone-card {
-      margin-top: clamp(1.2rem, 3vw, 1.6rem);
-      border-color: rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.03);
+    /* Standalone Survival Kit Section inside main box */
+    .standalone-section {
+      margin-top: clamp(1.3rem, 3vw, 1.7rem);
+      padding-top: clamp(1rem, 2.5vw, 1.3rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
   </style>
 </head>
@@ -209,57 +190,59 @@
   <div class="grid-overlay"></div>
 
   <main class="container">
-    <header class="header-box">
-      <h1 class="title">Hiking Checklist</h1>
-      <p class="note">Everything categorized &amp; kept in stuff sacks, no bifurcation, each category will be in a single stuff sack</p>
-    </header>
+    <div class="main-box">
+      <header class="header-group">
+        <h1 class="title">Hiking Checklist</h1>
+        <p class="note">Everything categorized &amp; kept in stuff sacks, no bifurcation, each category will be in a single stuff sack</p>
+      </header>
 
-    <div class="pack-heading">50L Rucksack</div>
+      <div class="pack-heading">50L Rucksack</div>
 
-    <!-- Main Compartment -->
-    <section class="section-card">
-      <h3 class="section-title">Main Compartment</h3>
-      <div class="item-list">
-        <div class="item-box"><span class="category">Survival Kit</span> - Gear kit &amp; medical kit, refer to the <a href="survival-kit.html" target="_blank" rel="noopener noreferrer">attached file</a></div>
-        <div class="item-box"><span class="category">Clothing</span> - 2 T shirt &amp; pants, 1 shorts, 1 fleece, jacket &amp; warm pants</div>
-        <div class="item-box"><span class="category">Sleeping</span> - 1 Tent, sleeping quilt &amp; sleeping pad ( sometimes outside the bag )</div>
-        <div class="item-box"><span class="category">Food</span> - 1 Plate, spoon, sponge &amp; food</div>
-      </div>
-    </section>
+      <!-- Main Compartment -->
+      <section class="section-group">
+        <h3 class="section-title">Main Compartment</h3>
+        <div class="item-list">
+          <p class="item-text"><span class="category">Survival Kit</span> - Gear kit &amp; medical kit, refer to the <a href="survival-kit.html" target="_blank" rel="noopener noreferrer">attached file</a></p>
+          <p class="item-text"><span class="category">Clothing</span> - 2 T shirt &amp; pants, 1 shorts, 1 fleece, jacket &amp; warm pants</p>
+          <p class="item-text"><span class="category">Sleeping</span> - 1 Tent, sleeping quilt &amp; sleeping pad ( sometimes outside the bag )</p>
+          <p class="item-text"><span class="category">Food</span> - 1 Plate, spoon, sponge &amp; food</p>
+        </div>
+      </section>
 
-    <!-- Side Compartment -->
-    <section class="section-card">
-      <h3 class="section-title">Side Compartment</h3>
-      <div class="item-list">
-        <div class="item-box"><span class="category">Rain</span> - 1 Rain jacket &amp; pants</div>
-        <div class="item-box"><span class="category">Dirty</span> - All dirty clothes &amp; items</div>
-      </div>
-    </section>
+      <!-- Side Compartment -->
+      <section class="section-group">
+        <h3 class="section-title">Side Compartment</h3>
+        <div class="item-list">
+          <p class="item-text"><span class="category">Rain</span> - 1 Rain jacket &amp; pants</p>
+          <p class="item-text"><span class="category">Dirty</span> - All dirty clothes &amp; items</p>
+        </div>
+      </section>
 
-    <!-- Top Compartment -->
-    <section class="section-card">
-      <h3 class="section-title">Top Compartment</h3>
-      <div class="item-list">
-        <div class="item-box"><span class="category">Toiletry</span> - 1 Toilet tent, paper soap, trowel &amp; wet wipes</div>
-        <div class="item-box"><span class="category">Accessories</span> - 1 cap, beanie, bandana, gloves, socks, gaiters, sunscreen, lip balm &amp; carabiners</div>
-      </div>
-    </section>
+      <!-- Top Compartment -->
+      <section class="section-group">
+        <h3 class="section-title">Top Compartment</h3>
+        <div class="item-list">
+          <p class="item-text"><span class="category">Toiletry</span> - 1 Toilet tent, paper soap, trowel &amp; wet wipes</p>
+          <p class="item-text"><span class="category">Accessories</span> - 1 cap, beanie, bandana, gloves, socks, gaiters, sunscreen, lip balm &amp; carabiners</p>
+        </div>
+      </section>
 
-    <!-- Hip Compartment -->
-    <section class="section-card">
-      <h3 class="section-title">Hip Compartment</h3>
-      <div class="item-list">
-        <div class="item-box"><span class="category">Essentials</span> - Snacks &amp; hiking specific gears</div>
-      </div>
-    </section>
+      <!-- Hip Compartment -->
+      <section class="section-group">
+        <h3 class="section-title">Hip Compartment</h3>
+        <div class="item-list">
+          <p class="item-text"><span class="category">Essentials</span> - Snacks &amp; hiking specific gears</p>
+        </div>
+      </section>
 
-    <!-- Survival Kit Section -->
-    <section class="section-card standalone-card">
-      <h3 class="section-title">Survival Kit</h3>
-      <div class="item-list">
-        <div class="item-box"><span class="category">Important</span> - Water, cooking, lights, medicines &amp; other essential gear ( kept in the survival kit )</div>
-      </div>
-    </section>
+      <!-- Survival Kit Section -->
+      <section class="section-group standalone-section">
+        <h3 class="section-title">Survival Kit</h3>
+        <div class="item-list">
+          <p class="item-text"><span class="category">Important</span> - Water, cooking, lights, medicines &amp; other essential gear ( kept in the survival kit )</p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script>
