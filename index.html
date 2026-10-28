@@ -34,9 +34,9 @@
       display: flex;
       justify-content: center;
       align-items: center; /* Center vertically on tall screens, auto-scroll gracefully on small */
-      padding: clamp(0.75rem, 2vh, 1.5rem) clamp(0.6rem, 2.5vw, 1.25rem);
-      padding-top: calc(clamp(0.75rem, 2vh, 1.5rem) + env(safe-area-inset-top, 0px));
-      padding-bottom: calc(clamp(0.75rem, 2vh, 1.5rem) + env(safe-area-inset-bottom, 0px));
+      padding: clamp(0.5rem, 1.5vh, 1.25rem) clamp(0.6rem, 2.5vw, 1.25rem);
+      padding-top: calc(clamp(0.5rem, 1.5vh, 1.25rem) + env(safe-area-inset-top, 0px));
+      padding-bottom: calc(clamp(0.5rem, 1.5vh, 1.25rem) + env(safe-area-inset-bottom, 0px));
       padding-left: calc(clamp(0.6rem, 2.5vw, 1.25rem) + env(safe-area-inset-left, 0px));
       padding-right: calc(clamp(0.6rem, 2.5vw, 1.25rem) + env(safe-area-inset-right, 0px));
       -webkit-font-smoothing: antialiased;
@@ -84,30 +84,30 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 16px;
-      padding: clamp(1.1rem, 2.5vh, 1.6rem) clamp(1rem, 3vw, 1.6rem);
+      padding: clamp(0.85rem, 1.8vh, 1.35rem) clamp(0.9rem, 2.5vw, 1.5rem);
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
     }
 
     /* Main Title Header inside Box */
     .header-group {
-      margin-bottom: clamp(0.7rem, 1.8vh, 1.1rem);
+      margin-bottom: clamp(0.5rem, 1.3vh, 0.8rem);
     }
 
     .title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-size: clamp(1.35rem, 3.8vw, 1.85rem);
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #faf5ec; /* Light cream tone */
-      margin-bottom: 0.35rem;
-      line-height: 1.25;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
       text-wrap: balance;
     }
 
     .note {
-      font-size: clamp(0.78rem, 2vw, 0.86rem);
+      font-size: clamp(0.74rem, 1.9vw, 0.83rem);
       color: #cfc9be; /* Very light cream/sand secondary */
-      line-height: 1.45;
+      line-height: 1.38;
       font-weight: 300;
       max-width: 95%;
       margin: 0 auto;
@@ -115,20 +115,20 @@
 
     /* Primary Pack Section */
     .pack-wrapper {
-      margin-bottom: clamp(0.7rem, 1.6vh, 1rem);
-      padding-bottom: clamp(0.6rem, 1.4vh, 0.85rem);
+      margin-bottom: clamp(0.5rem, 1.2vh, 0.75rem);
+      padding-bottom: clamp(0.45rem, 1.1vh, 0.65rem);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .pack-heading {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+      font-size: clamp(0.85rem, 2vw, 0.98rem);
       font-weight: 400;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #faf5ec;
       display: inline-block;
-      padding: 0.22rem 0.85rem;
+      padding: 0.18rem 0.8rem;
       border-radius: 9999px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -136,8 +136,8 @@
 
     /* Compartment Groups with clean bottom visual separators */
     .section-group {
-      margin-bottom: clamp(0.7rem, 1.6vh, 1rem);
-      padding-bottom: clamp(0.6rem, 1.4vh, 0.85rem);
+      margin-bottom: clamp(0.5rem, 1.2vh, 0.75rem);
+      padding-bottom: clamp(0.45rem, 1.1vh, 0.65rem);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -149,10 +149,10 @@
 
     .section-title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(0.96rem, 2.4vw, 1.08rem);
+      font-size: clamp(0.92rem, 2.3vw, 1.02rem);
       font-weight: 400;
       color: #f7f1e6; /* Very light cream title */
-      margin-bottom: clamp(0.35rem, 1vh, 0.5rem);
+      margin-bottom: clamp(0.22rem, 0.7vh, 0.35rem);
       letter-spacing: 0.015em;
     }
 
@@ -160,14 +160,14 @@
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 0.26rem; /* Comfortable, legible gap */
+      gap: 0.18rem; /* Tight, compact gap between rows */
     }
 
     .item-text {
-      font-size: clamp(0.82rem, 2.1vw, 0.9rem);
+      font-size: clamp(0.78rem, 2vw, 0.86rem);
       color: #ded8cb; /* Very light cream body */
       font-weight: 300;
-      line-height: 1.48;
+      line-height: 1.4;
     }
 
     .item-text a {
