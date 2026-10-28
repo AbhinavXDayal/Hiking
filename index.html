@@ -26,19 +26,19 @@
       color: #ede8dc; /* Soft light cream */
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
-      line-height: 1.55;
+      line-height: 1.4;
       min-height: 100vh;
       min-height: 100dvh;
       position: relative;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding: clamp(1.75rem, 4vw, 3rem) clamp(0.85rem, 3.5vw, 1.25rem) clamp(2.5rem, 5vw, 3.75rem);
-      padding-top: calc(clamp(1.75rem, 4vw, 3rem) + env(safe-area-inset-top, 0px));
-      padding-bottom: calc(clamp(2.5rem, 5vw, 3.75rem) + env(safe-area-inset-bottom, 0px));
-      padding-left: calc(clamp(0.85rem, 3.5vw, 1.25rem) + env(safe-area-inset-left, 0px));
-      padding-right: calc(clamp(0.85rem, 3.5vw, 1.25rem) + env(safe-area-inset-right, 0px));
+      align-items: center; /* Center vertically on tall screens, auto-scroll gracefully on small */
+      padding: clamp(0.75rem, 2vh, 1.5rem) clamp(0.6rem, 2.5vw, 1.25rem);
+      padding-top: calc(clamp(0.75rem, 2vh, 1.5rem) + env(safe-area-inset-top, 0px));
+      padding-bottom: calc(clamp(0.75rem, 2vh, 1.5rem) + env(safe-area-inset-bottom, 0px));
+      padding-left: calc(clamp(0.6rem, 2.5vw, 1.25rem) + env(safe-area-inset-left, 0px));
+      padding-right: calc(clamp(0.6rem, 2.5vw, 1.25rem) + env(safe-area-inset-right, 0px));
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       word-wrap: break-word;
@@ -73,8 +73,8 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 580px;
-      margin: 0 auto;
+      max-width: 540px;
+      margin: auto;
     }
 
     /* Single Outer Aesthetic Box containing the entire checklist */
@@ -83,31 +83,31 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: clamp(1.4rem, 3.5vw, 2.2rem) clamp(1.1rem, 3vw, 1.8rem);
-      box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.4);
+      border-radius: 14px;
+      padding: clamp(0.9rem, 2.2vh, 1.4rem) clamp(0.85rem, 2.5vw, 1.4rem);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
     }
 
     /* Main Title Header inside Box */
     .header-group {
-      margin-bottom: clamp(1.2rem, 3vw, 1.6rem);
+      margin-bottom: clamp(0.55rem, 1.4vh, 0.9rem);
     }
 
     .title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(1.65rem, 4.5vw, 2.05rem);
+      font-size: clamp(1.25rem, 3.8vw, 1.75rem);
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #faf5ec; /* Light cream tone */
-      margin-bottom: 0.45rem;
-      line-height: 1.25;
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
       text-wrap: balance;
     }
 
     .note {
-      font-size: clamp(0.82rem, 2vw, 0.88rem);
+      font-size: clamp(0.72rem, 1.8vw, 0.82rem);
       color: #cfc9be; /* Very light cream/sand secondary */
-      line-height: 1.5;
+      line-height: 1.35;
       font-weight: 300;
       max-width: 95%;
       margin: 0 auto;
@@ -115,20 +115,20 @@
 
     /* Primary Pack Section */
     .pack-wrapper {
-      margin-bottom: clamp(1rem, 2vw, 1.3rem);
-      padding-bottom: clamp(0.9rem, 2vw, 1.2rem);
+      margin-bottom: clamp(0.5rem, 1.3vh, 0.85rem);
+      padding-bottom: clamp(0.45rem, 1.2vh, 0.75rem);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .pack-heading {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      font-size: clamp(0.82rem, 2vw, 0.95rem);
       font-weight: 400;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #faf5ec;
       display: inline-block;
-      padding: 0.28rem 0.95rem;
+      padding: 0.18rem 0.75rem;
       border-radius: 9999px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -136,8 +136,8 @@
 
     /* Compartment Groups with clean bottom visual separators */
     .section-group {
-      margin-bottom: clamp(1rem, 2vw, 1.3rem);
-      padding-bottom: clamp(0.9rem, 2vw, 1.2rem);
+      margin-bottom: clamp(0.5rem, 1.3vh, 0.85rem);
+      padding-bottom: clamp(0.45rem, 1.2vh, 0.75rem);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -149,32 +149,32 @@
 
     .section-title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-size: clamp(0.88rem, 2.2vw, 1rem);
       font-weight: 400;
       color: #f7f1e6; /* Very light cream title */
-      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
-      letter-spacing: 0.02em;
+      margin-bottom: clamp(0.2rem, 0.8vh, 0.35rem);
+      letter-spacing: 0.015em;
     }
 
-    /* Checklist Items (Clean typography rows, no individual item dividers) */
+    /* Checklist Items (Clean typography rows, compact rhythm) */
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem; /* Natural clean vertical rhythm */
+      gap: 0.18rem; /* Ultra compact line spacing so it fits on phone screens */
     }
 
     .item-text {
-      font-size: clamp(0.84rem, 2vw, 0.91rem);
+      font-size: clamp(0.74rem, 1.9vw, 0.84rem);
       color: #ded8cb; /* Very light cream body */
       font-weight: 300;
-      line-height: 1.55;
+      line-height: 1.38;
     }
 
     .item-text a {
       color: #faf5ec;
       text-decoration: underline;
       text-decoration-color: rgba(250, 245, 236, 0.4);
-      text-underline-offset: 3px;
+      text-underline-offset: 2px;
       transition: text-decoration-color 0.15s ease, color 0.15s ease;
     }
 
